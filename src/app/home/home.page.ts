@@ -17,6 +17,9 @@ export class HomePage {
     this.students = this.studentService.getStudents();
   }
 
+  public async getSStudent(pos: number) {
+    this.students = this.studentService.getSStudents(pos);
+  }
   public async removeStudent(pos: number) {
     const alert = await this.alertController.create({
       header: 'Confirmación',

@@ -43,6 +43,9 @@ export class StudentService {
   public getStudents(): Student[]{
     return this.students;
   }
+  public getSStudents(pos:number): Student[]{
+    return this.students;
+  }
 
   public removeStudent(pos: number): Student[]{
     this.students.splice(pos, 1);
