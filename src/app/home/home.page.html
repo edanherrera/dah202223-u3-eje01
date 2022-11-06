@@ -10,7 +10,7 @@
     <ion-row>
         <ion-col>
             <ion-list>
-                <ion-item-sliding *ngFor="let item of students; let i=index">
+                <ion-item-sliding *ngFor="let item of students; let i=index" (click)="getSStudent(item.controlnumber)">
                     <ion-item>
                         <ion-label>{{item.name}}</ion-label>
                     </ion-item>

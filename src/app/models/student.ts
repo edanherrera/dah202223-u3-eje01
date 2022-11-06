@@ -1,7 +1,7 @@
 export class Student {
     controlnumber: string;
     name: string;
-    photo?:HTMLImageElement;
+    photo?:string;
     curp: string;
     age: number;
     nip: number;

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Student } from "../models/student";
 import { StudentService } from "../services/student.service";
 import { AlertController } from "@ionic/angular";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,12 +14,9 @@ export class HomePage {
 
   public students: Student[];
 
-  constructor(private studentService: StudentService, private alertController: AlertController) {
+  constructor(private studentService: StudentService, private alertController: AlertController, 
+    private router: Router) {
     this.students = this.studentService.getStudents();
-  }
-
-  public async getSStudent(pos: number) {
-    this.students = this.studentService.getSStudents(pos);
   }
   public async removeStudent(pos: number) {
     const alert = await this.alertController.create({
@@ -45,6 +43,15 @@ export class HomePage {
 
     await alert.present();
 
+  }
+
+  public getSStudent(cn:string): void{
+    this.router.navigate(
+      ['/view-student'],
+      {
+        queryParams: {controlnumber: cn}
+      }
+    );
   }
 
 }
