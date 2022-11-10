@@ -19,7 +19,7 @@ export class StudentService {
         name: "Israel Arjona Vizcaíno",
         nip: 717,
         photo: "https://picsum.photos/10/picsum/200/300"
-      }, 
+      },
       {
         controlnumber: "12400391",
         age: 28,
@@ -43,21 +43,23 @@ export class StudentService {
     ];
   }
 
-  public getStudents(): Student[]{
+  public getStudents(): Student[] {
     return this.students;
   }
-  public getSStudents(cn:string): Student{
+  public getSStudents(cn: string): Student {
     let item: Student;
-    item = this.students.find((student)=>{
-      return student.controlnumber===cn;
+    item = this.students.find((student) => {
+      return student.controlnumber === cn;
     });
     return item;
   }
 
-  public removeStudent(pos: number): Student[]{
+  public removeStudent(pos: number): Student[] {
     this.students.splice(pos, 1);
     return this.students;
   }
 
-
+  public newStudent(student: Student) {
+    this.students.push(student);
+  }
 }
