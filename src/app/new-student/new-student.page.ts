@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Student } from '../models/student';
 import { StudentService } from '../services/student.service';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
-import { PreloadingStrategy } from '@angular/router';
 @Component({
   selector: 'app-new-student',
   templateUrl: './new-student.page.html',
