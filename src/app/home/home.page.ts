@@ -53,5 +53,15 @@ export class HomePage {
       }
     );
   }
-
+  public gonewStudent(){
+    this.router.navigate(['/new-student']);
+  }
+  public goupdateStudent(cn:string): void{
+    this.router.navigate(
+      ['/update-student'],
+      {
+        queryParams: {controlnumber: cn}
+      }
+    );
+  }
 }

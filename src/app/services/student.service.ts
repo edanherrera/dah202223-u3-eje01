@@ -18,7 +18,7 @@ export class StudentService {
         email: "iarjona@ittepic.edu.mx",
         name: "Israel Arjona Vizcaíno",
         nip: 717,
-        photo: "https://picsum.photos/10/picsum/200/300"
+        photo: "https://picsum.photos/id/1/200/300"
       },
       {
         controlnumber: "12400391",
@@ -28,17 +28,17 @@ export class StudentService {
         email: "iarjona2@ittepic.edu.mx",
         name: "Israel Arjona Castañeda",
         nip: 818,
-        photo: "https://picsum.photos/10/picsum/200/300"
+        photo: "https://picsum.photos/id/1/200/300"
       },
       {
         controlnumber: "18401135",
-        age: 18,
-        career: "IC",
-        curp: "OOCI840917HNTRZS09",
-        email: "iarjona3@ittepic.edu.mx",
+        age: 22,
+        career: "ISC",
+        curp: "HEGE000601HNTRRDA7",
+        email: "edanherreraga@ittepic.edu.mx",
         name: "Eduardo Antonio",
         nip: 919,
-        photo: "https://picsum.photos/id/1/200/300"
+        photo: "https://i.pinimg.com/564x/00/f5/fa/00f5fac9a802835e1500cbcee9d9c073.jpg"
       }
     ];
   }
@@ -61,5 +61,9 @@ export class StudentService {
 
   public newStudent(student: Student) {
     this.students.push(student);
+  }
+
+  public updateStudent(student: Student, pos:number){
+    this.students[pos]=student;
   }
 }

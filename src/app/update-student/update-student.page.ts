@@ -1,33 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { Student } from '../models/student';
+import { Student } from "../models/student";
 import { StudentService } from '../services/student.service';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
-import { PreloadingStrategy } from '@angular/router';
-@Component({
-  selector: 'app-new-student',
-  templateUrl: './new-student.page.html',
-  styleUrls: ['./new-student.page.scss'],
-})
-export class NewStudentPage implements OnInit {
+import { ActivatedRoute } from '@angular/router';
 
-  public student:Student;
+@Component({
+  selector: 'app-update-student',
+  templateUrl: './update-student.page.html',
+  styleUrls: ['./update-student.page.scss'],
+})
+export class UpdateStudentPage implements OnInit {
+  public student: Student;
   public myForm:FormGroup;
   public validationMessages: Object;
   public careers:string[]=['ISC','IQ','IBQ','ARQ','IC','IG','IE','IM','LA','IT'];
-  constructor(private studentService:StudentService, private fb:FormBuilder) {
-    this.student={
-        controlnumber: "",
-        age: 0,
-        career: "",
-        curp: "",
-        email: "",
-        name: "",
-        nip: 0,
-        photo: ""
-    }
+  public sUpdate: Student[];
+  constructor(private studentService:StudentService, private aRoute: ActivatedRoute, private fb:FormBuilder){ 
+    this.sUpdate = this.studentService.getStudents();
+ 
   }
-
+  
   ngOnInit() {
+    this.aRoute.queryParams.subscribe((params)=>{
+      console.log(params);
+      this.student = this.studentService.getSStudents(params.controlnumber);
+    });
+
     this.myForm = this.fb.group({
       // ? Rules Control number
       controlNumber:["",Validators.compose([Validators.required,Validators.minLength(8),Validators.maxLength(8), Validators.pattern('^[0-9]+$')])],
@@ -103,20 +101,15 @@ export class NewStudentPage implements OnInit {
       ]
     }
   }
-
-  public newStudent(){
-    // ? Contruir el objeto
-    this.studentService.newStudent(this.student);
-    this.student={
-      controlnumber: "",
-      age: 0,
-      career: "",
-      curp: "",
-      email: "",
-      name: "",
-      nip: 0,
-      photo: ""
+  public updateStudent(){
+    for (let i = 0; i < this.sUpdate.length; i++) {
+      if(this.sUpdate[i].controlnumber.includes(this.student.controlnumber)){
+        console.log('Se actualizó con éxito');
+        this.studentService.updateStudent(this.student,i);
+      }else{
+        console.log('No se encontró el registro');
+        
+      }
+    }
   }
-  }
-
 }

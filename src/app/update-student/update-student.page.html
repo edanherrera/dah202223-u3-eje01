@@ -14,7 +14,8 @@
         <ion-col>
           <ion-item>
             <ion-label position="floating">Numero de control</ion-label>
-            <ion-input [(ngModel)]="student.controlnumber" formControlName="controlNumber"></ion-input>
+            <ion-input [disabled]="true" [(ngModel)]="student.controlnumber" formControlName="controlNumber">
+            </ion-input>
           </ion-item>
           <div>
             <ng-container *ngFor="let item of validationMessages['controlNumber']">
@@ -124,7 +125,7 @@
           </div>
         </ion-col>
       </ion-row>
-      <ion-button slot="end" (click)="newStudent()" expand="block" fill="clear" shape="round">
+      <ion-button slot="end" (click)="updateStudent()" expand="block" fill="clear" shape="round">
         Agregar nuevo Estudiante
       </ion-button>
     </form>

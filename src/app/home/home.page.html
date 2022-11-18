@@ -19,8 +19,18 @@
                             <ion-icon name="trash-outline"></ion-icon>
                         </ion-item-option>
                     </ion-item-options>
+                    <ion-item-options side="start" (ionSwipe)="goupdateStudent(item.controlnumber)">
+                        <ion-item-option expandable color="primary">
+                            <ion-icon name="hammer-outline"></ion-icon>
+                        </ion-item-option>
+                    </ion-item-options>
                 </ion-item-sliding>
             </ion-list>
         </ion-col>
+        <ion-fab vertical="bottom" horizontal="end">
+            <ion-fab-button style="padding: 4px;" color="warning" (click)="gonewStudent()">
+                <ion-icon name="accessibility-outline"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
     </ion-row>
 </ion-content>
